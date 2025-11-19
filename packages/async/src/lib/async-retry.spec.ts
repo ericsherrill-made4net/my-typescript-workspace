@@ -81,7 +81,7 @@ describe('async-retry', () => {
       const fn1 = vi
         .fn()
         .mockRejectedValueOnce(new Error('fail'))
-        .mockResolvedValue('success1');
+        .mockResolvedValue('success3');
 
       const fn2 = vi
         .fn()
@@ -94,7 +94,7 @@ describe('async-retry', () => {
       await vi.advanceTimersByTimeAsync(50);
 
       const [result1, result2] = await Promise.all([promise1, promise2]);
-      expect(result1).toBe('success1');
+      expect(result1).toBe('success3');
       expect(result2).toBe('success2');
     });
 
